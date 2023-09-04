@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'blogsite.wsgi.application'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'nssh4707@gmail.com'
-EMAIL_HOST_PASSWORD = 'najkpaanoxrhxpio'
+EMAIL_HOST_USER = 'smtp email'
+EMAIL_HOST_PASSWORD = 'smtp passowrd'
 EMAIL_PORT = 587
 
 
@@ -146,9 +146,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'AuthApp.CustomUser'
 
 cloudinary.config( 
-  cloud_name = "nsshserver", 
-  api_key = "128949761485349", 
-  api_secret = "E7V-za5kukW-uo5YRWbhEaUNC3k",
+  cloud_name = "your cloud server", 
+  api_key = "your api key", 
+  api_secret = "your secret key",
   secure = True
 )
 
