@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+
+<style>
+    .cont{
+        color: black;
+        font-size: 18px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background: transparent;
+        background-position: center;
+        align-items: center;  
+    }
+    .cont h1{
+        font-family: "Tangerine", serif;
+        font-weight: 700;
+    }
+   
+</style>
+{% include 'navbar.html'   %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <section class="h-100 bg-light">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      alt="Sample photo" class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="card-body p-md-5 text-black">
+                      <h3 class="mb-5 text-uppercase">Blog Data </h3>
+      
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                            {{ form.heading | as_crispy_field }}
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            {{ form.tag | as_crispy_field }}
+                        </div>
+                      </div>
+      
+                      <div class="row">
+                        <div class="col-md-12 mb-4">
+                            {{ form.image | as_crispy_field }}
+                        </div>
+                        
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 mb-4">
+                            {{ form.desc | as_crispy_field }}
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 mb-4">
+                            {{ form.upload_on | as_crispy_field }}
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            {{ form.upload_by | as_crispy_field }}
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-end pt-3">
+                        <button type="button" class="btn btn-light btn-lg">Reset all</button>
+                        <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                      </div>
+                      <div class="d-flex justify-content-end pt-3">
+                        <a  href="{% url 'home' %}" type="button" class="btn btn-light btn-lg">Back</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="text-center text-muted">
+          <div class="alert alert-danger">
+            <p>{{msg}}</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </section>
+</form>
+
+<script>
+    let uploadby = document.getElementById("id_upload_by");
+    let divuploadby = document.getElementById("div_id_upload_by");
+    divuploadby.style.display = "none";
+    
+    let username = '{{request.user}}'
+
+    document.getElementById("id_upload_by").value = username;
+
+    console.log(uploadby)
+
+
+</script>
+
+
+
+
+</form>
+{% endblock %}
+
+
+
+
+
+

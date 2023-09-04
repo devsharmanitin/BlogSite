@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    #id_email,#id_number ,#id_first_name ,#id_last_name{
+        width: 100%;
+        height: 50px;
+    }
+</style>
+<section class="vh-100" >
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-md-9 col-lg-7 col-xl-5 justify-content-center">
+          <div class="card" style="border-radius: 15px; ">
+            <div class="card-body p-4">
+              <div class="text-black">
+                
+                <form action="{% url 'UserDataupdate' %}" method="post">
+                    {% csrf_token %}
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-1">{{User.first_name |title }} {{User.last_name |title}}</h5>
+                  <h6 class="mb-1" style="color: #2b2a2a; font-size: 1.2rem; font-weight:500;">Upload Data And Submit</h6>
+                 
+                    <div class="justify-content-start">
+                        {{form.as_p}}
+                    </div>
+                     
+                   
+                  </div>
+                  <div class="d-flex pt-1">
+                    <a href="{% url 'CurrentUserProfile' %}" class="btn btn-outline-primary me-1 flex-grow-1">Reset</a>
+                    <button type="submit" class="btn btn-primary flex-grow-1">Submit</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}

@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<style>
+  @media screen and (min-width: 320px) and (max-width: 520px){
+    .new_img img{
+      margin-left: 10px;
+    }
+    .check-box{
+      width: 10%;
+    }
+    .new_box{
+      width: 50%;
+      margin-left: 40px;
+    }
+  }
+
+
+
+
+    .main_row{
+        color: rgb(247, 96, 41);
+        font-family: 'Roboto',sans-serif;  
+        background: transparent;
+    }
+    .main_row h1{
+        font-size: 25px;
+        font-weight: 800;
+        transition: 1s;
+    }
+    .main_row:hover h1{
+        
+        color: rgb(247, 96, 41);
+        border-radius: 5px;
+        transform: scale(1.1);
+    }
+    .btn-01{
+        border: none;
+        background-color: rgb(233, 220, 220)202, 197, 197;
+        color: rgb(85, 83, 83);
+        font-size: 14px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        transition: 1s;
+    }
+    .btn-01:hover{
+        border:  1px solid white;
+        background-color: rgb(85, 83, 83);
+        color: white;
+        box-shadow: 1px 4px 4px rgb(85, 83, 83);
+    }
+    .new_row{
+        color: rgb(85, 83, 83);
+        font-size: 15px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+    }
+    .new_sec label{
+        font-size: 14px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+        background-color: rgb(233, 220, 220)202, 197, 197;
+        color: rgb(85, 83, 83);
+    }
+    .input_box{
+        background-color: rgba(226, 223, 223, 0.815);
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        width: 100%;
+    }
+    .btn-02{
+        border: none;
+        background-color: rgb(247, 96, 41);
+        color: white;
+        font-size: 14px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        transition: 1s;
+    }
+    .btn-02:hover{
+        border:  1px solid rgb(247, 96, 41);
+        background-color: white;
+        color: rgb(247, 96, 41);
+        box-shadow: 4px 4px 4px rgb(247, 96, 41);
+    }
+    .new_box{
+        height: 10px;
+        width: 80%;
+        background-color: rgb(207, 204, 204);
+        margin-top: -17px;
+        margin-left: 40px;
+    }
+    .new_img img{
+        border-radius: 5px;
+
+    }
+    .container-modal{
+      height: 150px;
+      width: 400px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(63, 63, 63);
+      font-family: 'Roboto',sans-serif;
+      font-weight: 500;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      margin-top: -450px;
+      margin-left: -250px;
+      padding: 30px;
+      
+      border: 0.5px solid rgb(45, 45, 45);
+      border-radius: 3px;
+    }
+    
+    
+    
+</style>
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <form method="post" action="{% url 'register' %}">
+              {% csrf_token  %}
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="firstName" name="first_name" class="form-control form-control-lg" />
+                    <label class="form-label" for="firstName">First Name</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="lastName" name="last_name" class="form-control form-control-lg" />
+                    <label class="form-label" for="lastName">Last Name</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <input type="text" class="form-control form-control-lg" name="username" id="birthdayDate" />
+                    <label for="birthdayDate" class="form-label">Username</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" name="email" class="form-control form-control-lg" />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
+                </div>
+                
+              </div>
+
+              <div class="row">
+                
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="password" id="phoneNumber" name="password" class="form-control form-control-lg" />
+                    <label class="form-label" for="phoneNumber">Password</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="password" id="phoneNumber" name="password1" class="form-control form-control-lg" />
+                    <label class="form-label" for="phoneNumber">Confirm Password</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                      value="Female" checked />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                      value="Male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                      value="Other" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div> 
+              </div>
+
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+{% endblock %}
